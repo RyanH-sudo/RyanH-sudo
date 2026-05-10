@@ -28,7 +28,7 @@ PCI DSS v4.0  ·  CIS Controls v8  ·  NIST CSF 2.0  ·  NIST 800-171  ·  CMMC 
 
 Senior Platform Engineer  ·  Senior Data Platform Engineer  ·  Applied AI Engineer  ·  Forward Deployed Engineer  ·  Solutions Engineer
 
-Remote, relocation, or 1099 contracting through Mercor / direct.
+Remote or 1099 contracting through Mercor / direct.
 
 ### Contact
 
