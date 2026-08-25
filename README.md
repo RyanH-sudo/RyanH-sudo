@@ -39,7 +39,7 @@ Two standing harnesses now prove those fixes are still closed rather than assert
 
 Currently architecting **NTK-ONE**, a modular rebuild driven by a hard constraint: every module must be small enough to load, reason about and refactor in a single context window without mapping the whole codebase. The measured motivation — one renderer in the current platform is 25,966 lines, which is roughly a third of a 1M-token window just to read once.
 
-In design: a **vendor-neutral firewall configuration model** (read → normalise → edit → diff in vendor-native syntax → push → re-read → verify), an **engineer console** over in-box SSH and PowerShell Remoting, **change-driven agentic monitoring** that reasons only on what a deterministic policy gate escalates, and **exposure-window tracking** (first-seen · days-open · audits-carried) — a metric a point-in-time scanner structurally cannot produce.
+In design: a **third audit pillar for Microsoft 365 / Entra ID tenants**, built to the same shape as the server pillar — because a pillar here is an ingest module plus aggregators plus report chapters against one canonical envelope, so it inherits stable finding identity, diffing, the AI pipeline and the evidence-first rendering discipline rather than reimplementing them. Alongside it: a **vendor-neutral firewall configuration model** (read → normalise → edit → diff in vendor-native syntax → push → re-read → verify), an **engineer console** over in-box SSH and PowerShell Remoting, **change-driven agentic monitoring** that reasons only on what a deterministic policy gate escalates, and **exposure-window tracking** (first-seen · days-open · audits-carried) — a metric a point-in-time scanner structurally cannot produce.
 
 ### Engineering case study
 
