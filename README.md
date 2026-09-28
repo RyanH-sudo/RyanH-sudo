@@ -15,7 +15,7 @@ IMPACT North America in Nashville, October 2026.
 ### Selected work
 
 **NinjaToolKit: an agentic audit and remediation platform** (private company software; technical case study:
-[ninjatoolkit-case-study](https://github.com/RyanH-sudo/ninjatoolkit-case-study))
+[read online](https://ryanh-sudo.github.io/ninjatoolkit-case-study/), [repository](https://github.com/RyanH-sudo/ninjatoolkit-case-study))
 
 An engineer-facing platform for managed Windows Server estates and WatchGuard firewalls, shipped as one
 self-contained executable and in production use across 224 servers and 48 client organizations.
