@@ -18,25 +18,27 @@ IMPACT North America in Nashville, October 2026.
 [read online](https://ryanh-sudo.github.io/ninjatoolkit-case-study/), [repository](https://github.com/RyanH-sudo/ninjatoolkit-case-study))
 
 An engineer-facing platform for managed Windows Server estates and WatchGuard firewalls, shipped as one
-self-contained executable and in production use across 200 servers, 48 client organizations and 37 firewalls. At its
-v8.2.0 release, a first diagnosis of a nine-server fleet it had never seen took 12 minutes and $4.56 and produced 41
-issues.
+self-contained executable and used by an MSP's engineering team across 189 servers, 48 client organizations and 37
+firewalls. Evaluated in October 2026 on servers it had never seen, against answer keys written before each run, it
+found 40 of 47 open problems in full and 4 in part, and made none of the claims the keys ruled out. A first diagnosis
+costs about $4.50 a server and takes about 20 minutes.
 
-- An adversarial multi-agent diagnosis: a proposer, a challenger whose task is to break the proposal, an arbiter that
-  rules on every claim, and a writer that turns rulings into issues, with claims streamed into the interface as they
-  are written.
-- A console that converses on the work itself: the Job's own record as its fixed instructions, and a bounded tool
-  loop to read another server, propose a script at the approval step or amend an issue, every call priced before it
-  is sent.
-- Agent output held to evidence in code: a fixed claim format, issues dropped if they cite anything the rulings do not
-  support, readings kept only on quoted lines of real output, fixes held if their backup or revert would fail.
-- A structural safety model: no transport to client machines, read-only tests under run tokens with a hash chain of
-  custody, and fixes with a backup, a literal revert and a verification, which the builder refuses if anything above
-  the apply switch would run.
-- 55 deterministic server judges with their precision measured on 200 production servers, a 52-check firewall engine
-  mapped to 50 controls in PCI DSS, CIS, NIST CSF and CMMC, and a 47-section PowerShell collector.
-- 203,000 lines of product code, 13,267 tests passing at release, 19 standing verification harnesses, and 57 tagged
-  releases between March and September 2026, each walked end to end in the built executable before it shipped.
+- An adversarial multi-agent diagnosis: a first engineer reads the server's whole raw capture, a second tries to
+  break that read, and a lead engineer rules on every claim and orders the work, with what each piece waits on and
+  the machine its next data comes from.
+- Every answer the code acts on is a strict tool or JSON schema; deciding quotes are verified against the server's
+  own output in code; a reply that starts looping is stopped and read up to where the repeating began.
+- A console that converses on the whole Job, with six tools and every call priced before it is sent: it writes
+  reviewed fixes and read-only tests, reads the client's other servers, and writes the Job's time entry.
+- A structural safety model: no transport to client machines, read-only tests under per-machine run tokens with a hash
+  chain of custody, and fixes with a backup, a literal revert and a verification, held by a reviewer agent if the
+  undo would not work and refused by the builder if anything above the apply switch would run.
+- 56 deterministic server judges with their precision measured on the estate, a role checklist for seven server
+  roles, a 52-check firewall engine mapped to 50 controls in PCI DSS, CIS, NIST CSF and CMMC, and a 47-section
+  PowerShell collector.
+- 210,000 lines of product code and 13,409 passing tests; every build walked from an empty folder, all 457 pages
+  crawled, and every agent failure mode proven to end in a stated state; 57 version tags between March and October
+  2026.
 
 **MX Toolbox Enterprise** ([repository](https://github.com/RyanH-sudo/mxtoolbox-enterprise))
 
@@ -69,6 +71,8 @@ Self-paced learning applications for forward deployed engineering, network engin
 - **Hold AI output to evidence in code.** A model proposes; code verifies; a person approves anything irreversible.
 - **Test the artifact, not only the suite.** I walk the built product end to end, then run it on real data it has
   never seen, before I call it done, because passing tests have coexisted with wrong output.
+- **Score AI against answers written in advance.** Accuracy is measured against keys written from each server's own
+  evidence before the run: what a correct diagnosis must find, and what it must not claim.
 - **Measure precision on the real estate.** A check that fires on 198 of 200 servers teaches an engineer to ignore it,
   so every check is re-measured on production data before a release.
 - **Build with AI as an engineering partner.** I design the architecture and the process and own every decision that
