@@ -1,6 +1,6 @@
 ## Ryan Haig
 
-**Forward Deployed Engineer, eMazzanti Technologies.** I take frontier AI models into real operating environments
+**Forward Deployed Engineer and AI Automation Engineer.** I take frontier AI models into real operating environments
 and make them do reliable engineering work there: diagnosing servers, auditing firewalls, and walking each problem to
 a verified fix, with a human in control of everything that touches production. My background is the infrastructure
 itself: network engineering, Windows Server administration and architecture, and security operations at a managed
@@ -14,14 +14,14 @@ IMPACT North America in Nashville, October 2026.
 
 ### Selected work
 
-**NinjaToolKit: an agentic audit and remediation platform** (private company software; technical case study:
-[read online](https://ryanh-sudo.github.io/ninjatoolkit-case-study/), [repository](https://github.com/RyanH-sudo/ninjatoolkit-case-study))
+**NinjaToolKit: an agentic audit and remediation platform** (private company software; technical case studies and
+demos: [read online](https://ryanh-sudo.github.io/ninjatoolkit-case-study/), [repository](https://github.com/RyanH-sudo/ninjatoolkit-case-study))
 
 An engineer-facing platform for managed Windows Server estates and WatchGuard firewalls, shipped as one
 self-contained executable and used by an MSP's engineering team across 189 servers, 48 client organizations and 37
-firewalls. Evaluated in October 2026 on servers it had never seen, against answer keys written before each run, it
-found 40 of 47 open problems in full and 4 in part, and made none of the claims the keys ruled out. A first diagnosis
-costs about $4.50 a server and takes about 20 minutes.
+firewalls. **v8.3.1 is shipped** (October 17, 2026). Its agents, evaluated on servers they had never seen against answer
+keys written before each run, found 40 of 47 open problems in full and 4 in part, and made none of the claims the keys
+ruled out; a first diagnosis costs about $4.50 a server and takes about 20 minutes.
 
 - An adversarial multi-agent diagnosis: a first engineer reads the server's whole raw capture, a second tries to
   break that read, and a lead engineer rules on every claim and orders the work, with what each piece waits on and
@@ -36,9 +36,29 @@ costs about $4.50 a server and takes about 20 minutes.
 - 56 deterministic server judges with their precision measured on the estate, a role checklist for seven server
   roles, a 52-check firewall engine mapped to 50 controls in PCI DSS, CIS, NIST CSF and CMMC, and a 47-section
   PowerShell collector.
-- 210,000 lines of product code and 13,409 passing tests; every build walked from an empty folder, all 457 pages
-  crawled, and every agent failure mode proven to end in a stated state; 57 version tags between March and October
-  2026.
+- 213,888 lines of product code and 13,709 passing tests at v8.3.1; the release certified by eight layered walks of
+  the built product from an empty folder, 91 defects found and fixed before release; 59 version tags between March
+  and October 2026.
+
+**v9 is in build: evidence-first AI diagnosis.** It keeps the accuracy and moves the work down a ladder I call the
+burn-down: every question is settled by the cheapest layer that can prove its answer within a stated error bound.
+
+- Deterministic code first (judges, a signature index built from 750 of Microsoft's troubleshooting articles, the
+  team's benign rules and fault signatures, a root-cause gate), then **GLiNER 2.5** turning free text into typed
+  entities and relations on a CPU.
+- A **calibrated decision model (TypeSafe's Jev)** answering batteries of typed questions, recalibrated per question
+  and accepted only with a **conformal guarantee** at each action's error bound; consistency probes as free
+  uncertainty; **Claude Opus 5.5** only on the residue, its claims verified in code and by the decision model.
+- Diagnosis as a belief over hypotheses with the next check chosen by expected information gain; a learning loop
+  that recalibrates, retunes questions and turns confirmed patterns into deterministic checks.
+- Underneath: a typed PowerShell collector hardened across ten real estate runs (181 of 185 servers back, 0
+  malformed records), an observation store with provenance, a dependency map with evidence on every link, live
+  telemetry, and many engineers at once; scored against an answer key of 7,247 items built before the AI layer.
+  Targets: a first diagnosis at $0.10 to $0.40 and precision of 99% reported with a statistical bound.
+- The firewall pillar on the same footing: one firewall model filled from the configuration export, WatchGuard Cloud's
+  read-only APIs and traffic logs, with two independently written readers agreeing on every part across 53 real
+  exports; the same ladder run over exposure paths, both ends of a VPN and the servers behind them; fixes written for
+  the engineer's hands and proved by a new export.
 
 **MX Toolbox Enterprise** ([repository](https://github.com/RyanH-sudo/mxtoolbox-enterprise))
 
@@ -56,7 +76,7 @@ Self-paced learning applications for forward deployed engineering, network engin
 
 | | |
 |---|---|
-| **Applied AI engineering** | Multi-agent orchestration, tool use, context engineering, evaluation and verification of model output, refusal-aware model routing, cost governance, the Claude API |
+| **Applied AI engineering** | Multi-agent orchestration, tool use, context engineering, evaluation and verification of model output, calibration and conformal acceptance, small-model routing (GLiNER, decision models), refusal-aware model routing, cost governance, the Claude API |
 | **Network engineering** | WatchGuard, Cisco Catalyst, HPE Aruba CX, multi-vendor firewall security, Auvik network operations, Linux network services |
 | **Server architecture and administration** | Windows Server 2012 R2 to 2025, Active Directory, Group Policy, Hyper-V and failover clustering, Exchange hybrid |
 | **Cloud** | Microsoft Azure, Microsoft 365 multi-tenant administration, Entra ID, Intune, Purview, the Graph API, AWS, Google Cloud |
