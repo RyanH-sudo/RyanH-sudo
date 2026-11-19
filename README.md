@@ -38,6 +38,18 @@ real estate of 189 captured servers, 48 client organizations and 37 firewalls. I
 | **AI output held to facts** | 318 of 318 audit fields kept by code's check of what the model wrote |
 | **History** | 6,526 commits since March 2026, 62 version tags, 111 numbered design decisions |
 
+**Under the hood**
+
+| | |
+|---|---|
+| **Application** | One asynchronous Python package on Quart and Hypercorn; one process serves a whole office; one WebSocket per browser with subscribed topics, so a page hears of a change in the time the write takes |
+| **Data** | SQLite in write-ahead mode with one writer and short transactions; one schema of 100 tables, changed only by forward-only numbered steps; an append-only work log; every write stamped by a trigger with the engineer who made it |
+| **Agents** | Their own key, a single-use enrolment code, a certificate from the office's own authority, TLS 1.3 with mutual certificates, outbound only; work travels back on the answer to the agent's own report, and a script runs only if its digest matches |
+| **Models** | One client for every call: priced before it is sent, held under a ceiling, written to a ledger, refusals resent once on the fallback; shared evidence as a cached prefix, background reads as half-price batches; GLiNER in its own local process; a decision model recalibrated by isotonic regression and accepted under a Clopper-Pearson bound |
+| **Proof in code** | Quotes matched against the capture four ways; scripts proved read-only by PowerShell's own parser against allow lists, failing closed; audit prose checked name by name and number by number against the audit's facts |
+| **Structure** | Eleven layers whose imports go one way, held by a test that reads the import graph; ratchets on connections, SDK imports, threads, environment reads, file and function size that may only fall |
+| **Delivery** | One self-contained Windows folder with the local model inside; an install script that registers it to start after every boot; nightly verified backups with a second location; a support bundle with every secret scrubbed |
+
 **What I built, and why each part is the way it is**
 
 - **The model reads everything first, and code holds it to the evidence.** A server's entire raw output goes to
