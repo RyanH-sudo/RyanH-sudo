@@ -1,6 +1,6 @@
 ## Ryan Haig
 
-**Forward Deployed Engineer and AI Automation Engineer.** I take frontier AI models into real operating environments
+**Forward Deployed Engineer.** I take frontier AI models into real operating environments
 and make them do reliable engineering work there: diagnosing servers, auditing firewalls, and walking each problem to
 a verified fix, with a human in control of everything that touches production. My background is the infrastructure
 itself: network engineering, Windows Server administration and architecture, and security operations at a managed
@@ -159,5 +159,3 @@ Self-paced learning applications for forward deployed engineering, network engin
 ### Contact
 
 [rytuality@gmail.com](mailto:rytuality@gmail.com) · [linkedin.com/in/rytuality](https://linkedin.com/in/rytuality)
-
-US citizen, working remotely and available during US business hours.
