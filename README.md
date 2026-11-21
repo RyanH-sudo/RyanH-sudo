@@ -25,25 +25,27 @@ ships as one self-contained Windows program that runs on a server for a whole en
 on the servers it looks after. It is private company software, so the case study describes its architecture and
 method without its source, and the film shows the released program working an estate that does not exist.
 
-**v9.0.1 is the current release (November 19, 2026).** v9 is a rebuild on one schema, built and measured against a
+**v9.0.2 is the current release (November 20, 2026).** v9 is a rebuild on one schema, built and measured against a
 real estate of 189 captured servers, 48 client organizations and 37 firewalls. I designed it, built it and released it.
+Everything it does is laid out in the case study's [capability map](https://ryanh-sudo.github.io/ninjatoolkit-case-study/case-study/#11-the-capability-map).
 
 | | |
 |---|---|
-| **Code** | 138,202 lines of Python in eleven layers whose imports go one way; 32,284 lines of JavaScript; a 4,165-line PowerShell collector |
-| **Tests** | 6,096 passing in 671 files, 17 standing verification harnesses, a five-part release gate |
-| **Deterministic checks** | 177: 117 for servers, 52 in the firewall engine, 8 on a Firebox's own settings, mapped to the 287 controls of NIST SP 800-53 Rev 5 Moderate and to CSF 2.0 |
+| **Code** | 139,481 lines of Python in eleven layers whose imports go one way; 32,354 lines of JavaScript; a 4,165-line PowerShell collector |
+| **Tests** | 6,145 passing in 670 files, 17 standing verification harnesses, a five-part release gate |
+| **Deterministic checks** | 179: 117 for servers, 52 in the firewall engine, 10 on a Firebox's own settings, certificates and reach, mapped to the 287 controls of NIST SP 800-53 Rev 5 Moderate and to CSF 2.0 |
 | **Models** | Claude Opus 5.5 with Opus 5 as fallback, GLiNER 2.5 running locally, a hosted calibrated decision model |
 | **Load** | 80,161 requests through 2 hours 40 minutes with no error; fifty agents for an hour with no batch lost |
-| **AI output held to facts** | 318 of 318 audit fields kept by code's check of what the model wrote |
-| **History** | 6,526 commits since March 2026, 62 version tags, 111 numbered design decisions |
+| **AI output held to facts** | 318 of 318 audit fields kept by code's check of what the model wrote; a Job's documents held to its facts the same way |
+| **Firewall coverage** | Every one of 1,923 value-carrying element paths in 54 exports accounted for by a trace of the code: 1,531 read, 23 secrets never shown, 369 out of scope with reasons |
+| **History** | 6,546 commits since March 2026, 63 version tags, 111 numbered design decisions |
 
 **Under the hood**
 
 | | |
 |---|---|
 | **Application** | One asynchronous Python package on Quart and Hypercorn; one process serves a whole office; one WebSocket per browser with subscribed topics, so a page hears of a change in the time the write takes |
-| **Data** | SQLite in write-ahead mode with one writer and short transactions; one schema of 100 tables, changed only by forward-only numbered steps; an append-only work log; every write stamped by a trigger with the engineer who made it |
+| **Data** | SQLite in write-ahead mode with one writer and short transactions; one schema of 101 tables, changed only by forward-only numbered steps; an append-only work log; every write stamped by a trigger with the engineer who made it |
 | **Agents** | Their own key, a single-use enrolment code, a certificate from the office's own authority, TLS 1.3 with mutual certificates, outbound only; work travels back on the answer to the agent's own report, and a script runs only if its digest matches |
 | **Models** | One client for every call: priced before it is sent, held under a ceiling, written to a ledger, refusals resent once on the fallback; shared evidence as a cached prefix, background reads as half-price batches; GLiNER in its own local process; a decision model recalibrated by isotonic regression and accepted under a Clopper-Pearson bound |
 | **Proof in code** | Quotes matched against the capture four ways; scripts proved read-only by PowerShell's own parser against allow lists, failing closed; audit prose checked name by name and number by number against the audit's facts |
@@ -80,8 +82,15 @@ real estate of 189 captured servers, 48 client organizations and 37 firewalls. I
   every route traced from the internet through static NAT and the policy that carries it, past its gate, to the
   internal address and port, the server that holds it and the process that listens there. Six honest end states,
   including "nothing answers here" and "that address belongs to another client". Rule-base anomalies are computed on
-  resolved address space, never on alias names. Policies carry Policy Manager's own numbers, because 1,428 of 1,505
-  sit at a different position in the file.
+  resolved address space, never on alias names, with zones read as the networks they hold, and a first-match
+  simulator says which rule really answers each service. Policies carry Policy Manager's own numbers, because 1,428 of
+  1,505 sit at a different position in the file. Every element path of 54 exports that carries a value is accounted
+  for by a trace of the program's own code, and v9 raises every one of the previous engine's 1,124 faults on the same
+  37 firewalls with the same check, severity and words.
+- **Causes weighed in code.** Inside a diagnosis, a belief over a family's causes and "other" is updated by Bayes'
+  rule as each observation arrives, a model's reading entering only as soft evidence at its calibrated probability.
+  The next check is the one with the most expected information for its cost, and a cause is confirmed only on a real
+  proof: a native tool's answer, a correlation, a control, or a before and after.
 - **Agents and a standing watch.** Each agent reads through the Windows API and starts no other process. It makes
   its own key, is enrolled with a single-use code and a certificate from the platform's own authority, calls out over
   TLS 1.3 and holds the line open; nothing listens at a client. The watch measures which fields move by themselves
@@ -89,18 +98,21 @@ real estate of 189 captured servers, 48 client organizations and 37 firewalls. I
   losing one. When readings trip a rule a Job opens by itself, and servers that go silent together open one Job.
 - **Two client audits written by the model and checked by code.** The model is given an audit's facts and nothing
   else; every name and number it writes is checked against them. On the release candidate 318 of 318 fields were
-  kept, and three numbers the model invented were refused and rewritten.
-- **Engineered to be operated.** One schema of 100 tables with forward-only numbered steps. Sign-in by name, roles,
+  kept, and three numbers the model invented were refused and rewritten. A Job's time entry, client email and report
+  are held to the Job's own record the same way.
+- **Engineered to be operated.** One schema of 101 tables with forward-only numbered steps. Sign-in by name, roles,
   nightly verified backups with a second location, a support bundle with every secret scrubbed. Every model call is
   priced before it is sent, held under a ceiling and written to a ledger; the AI is off in a new install. Before
   release the process was soaked, loaded with fifty engineers at once, and killed in the middle of an ingest and of a
   model call, and recovered both times.
 - **A release process that finds its own defects.** The evening v9.0.0 shipped I ran it end to end with the real
   model on an invented estate. That run, and filming the fixed build, found four defects that 6,092 passing tests had not. Each was fixed with a
-  test that fails on v9.0.0, and v9.0.1 shipped the next morning.
+  test that fails on v9.0.0, and v9.0.1 shipped the next morning. Filming v9.0.1 found one more and checking its
+  documents two more; v9.0.2 fixed all three the day after, with the firewall pillar completed.
 
 | Release | Date | What changed |
 |---|---|---|
+| v9.0.2 | November 20, 2026 | The firewall pillar completed (every export path accounted for, zones as networks, every finding on the page); a Job's documents held to its facts; pages that see a new audit and a new export without a restart |
 | v9.0.1 | November 19, 2026 | Four defects found by running v9.0.0 for real, fixed and proved in the built program |
 | v9.0.0 | November 18, 2026 | A rebuild: one program on one schema, agents, a standing watch, one loop from a first read to a gated fix, both audits written by the model and checked by code |
 | v8.3.2 | November 4, 2026 | The script loop made dependable for a whole office |
