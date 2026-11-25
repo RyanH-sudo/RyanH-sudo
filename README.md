@@ -124,7 +124,7 @@ Everything it does is laid out in the case study's [capability map](https://ryan
 
 ### Other work
 
-**MX Toolbox Enterprise** ([repository](https://github.com/RyanH-sudo/mxtoolbox-enterprise))
+**MX Toolbox Enterprise**
 
 A self-hosted DNS and mail-deliverability suite (FastAPI, React, PostgreSQL, Redis, Celery): SPF, DKIM and DMARC
 validation, blacklist monitoring, phishing classification and threat-intelligence scoring, deployable with Docker.
