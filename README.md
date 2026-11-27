@@ -1,6 +1,6 @@
 ## Ryan Haig
 
-**Forward Deployed Engineer.** I take frontier AI models into real operating environments
+**AI Solutions Architect and Forward Deployed Engineer.** I take frontier AI models into real operating environments
 and make them do reliable engineering work there: diagnosing servers, auditing firewalls, and walking each problem to
 a verified fix, with a human in control of everything that touches production. My background is the infrastructure
 itself: network engineering, Windows Server administration and architecture, and security operations at a managed
@@ -145,8 +145,8 @@ Self-paced learning applications for forward deployed engineering, network engin
 | **Network engineering** | WatchGuard, Cisco Catalyst, HPE Aruba CX, multi-vendor firewall security, NAT and policy analysis, rule-base anomaly and first-match analysis on resolved address space, VPN cryptography grading, mutual TLS and private certificate authorities, Auvik network operations, Linux network services |
 | **Server architecture and administration** | Windows Server 2012 R2 to 2025, Active Directory, DNS, DHCP, Group Policy, Hyper-V and failover clustering, Exchange hybrid, PowerShell at fleet scale |
 | **Cloud** | Microsoft Azure, Microsoft 365 multi-tenant administration, Entra ID, Intune, Purview, the Graph API, AWS, Google Cloud |
-| **Security operations** | Microsoft Defender XDR, Microsoft Sentinel, Purview eDiscovery, incident response, business email compromise and mailbox forensics across 500+ tenants, NIST SP 800-53 and CSF 2.0 mapping, MITRE ATT&CK |
-| **Software and DevOps** | Python (asyncio, Quart), PowerShell, SQL (SQLite), JavaScript (canvas, WebSockets), Git, self-contained Windows builds, release gating, soak, load and failure testing, verification harnesses |
+| **Security operations** | Microsoft Defender XDR, Microsoft Sentinel, Purview eDiscovery, incident response, business email compromise and mailbox forensics, NIST SP 800-53 and CSF 2.0 mapping, MITRE ATT&CK |
+| **Software and DevOps** | Python (asyncio, Quart), PowerShell, SQL (SQLite), Git, self-contained Windows builds, release gating, soak, load and failure testing, verification harnesses |
 
 ---
 
